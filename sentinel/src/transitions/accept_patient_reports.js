@@ -8,7 +8,6 @@ var _ = require('underscore'),
   transitionUtils = require('./utils'),
   date = require('../date'),
   db = require('../db-pouch'),
-  dbNano = require('../db-nano'),
   NAME = 'accept_patient_reports';
 
 const _hasConfig = doc => {
