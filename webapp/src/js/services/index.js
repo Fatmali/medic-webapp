@@ -95,4 +95,5 @@
   require('./xml-forms-context-utils');
   require('./xslt');
   require('./z-score');
+  require('./partner-images');
 })();
