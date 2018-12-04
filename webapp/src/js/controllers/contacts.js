@@ -450,7 +450,11 @@ var _ = require('underscore'),
       },
     });
 
-    $scope.$on('$destroy', changeListener.unsubscribe);
+    $scope.$on('$destroy', function () {
+      changeListener.unsubscribe();
+      LiveList.contacts.set([]);
+      LiveList['contact-search'].set([]);
+    });
 
     if ($stateParams.tour) {
       Tour.start($stateParams.tour);
