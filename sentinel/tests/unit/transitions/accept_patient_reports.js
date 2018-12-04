@@ -244,9 +244,8 @@ describe('accept_patient_reports', () => {
           ],
         },
       ];
-      sinon
-        .stub(utils, 'getRegistrations')
-        .callsArgWith(1, null, registrations);
+
+      sinon.stub(utils, 'getReportsBySubject').resolves(registrations);
       transition._handleReport(doc, config, (err, complete) => {
         complete.should.equal(true);
         putRegistration.callCount.should.equal(1);
@@ -309,9 +308,7 @@ describe('accept_patient_reports', () => {
           ],
         },
       ];
-      sinon
-        .stub(utils, 'getRegistrations')
-        .callsArgWith(1, null, registrations);
+      sinon.stub(utils, 'getReportsBySubject').resolves(registrations);
       transition._handleReport(doc, config, (err, complete) => {
         complete.should.equal(true);
         putRegistration.callCount.should.equal(1);
