@@ -153,19 +153,19 @@ app.get('/', function(req, res) {
 });
 
 app.get('/favicon.ico', (req, res) => {
-  // Cache for a week.  Normally we don't interferse with couch headers, but
+  // Cache for a week. Normally we don't interfere with couch headers, but
   // due to Chrome (including Android WebView) aggressively requesting
   // favicons on every page change and window.history update
-  // (https://github.com/medic/medic-webapp/issues/1913 ), we have to stage an
-  // intervention:
+  // ( https://github.com/medic/medic-webapp/issues/1913 ), we have to
+  // stage an intervention
   writeHeaders(req, res, [['Cache-Control', 'public, max-age=604800']]);
   db.medic.get('branding').then(doc => {
     db.medic.getAttachment(doc._id, doc.resources.favicon).then(blob => {
       res.send(blob);
     });
   }).catch(err => {
-    res.sendFile('public/favicon.ico' , { root : __dirname});
-    logger.error('Branding doc or/and favicon missing: %o', err);
+    res.sendFile('resources/ico/favicon.ico' , { root : __dirname });
+    logger.warn('Branding doc or/and favicon missing: %o', err);
   });
 });
 
