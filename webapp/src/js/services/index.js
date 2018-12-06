@@ -62,6 +62,7 @@
   require('./moment-locale-data');
   require('./mrdt');
   require('./place-hierarchy');
+  require('./purger');
   require('./recurring-process-manager');
   require('./relative-date');
   require('./report-view-model-generator');
